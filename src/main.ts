@@ -4,12 +4,10 @@ import router from './router'
 import store from './store'
 
 import './assets/main.css'
-import { globalRegister } from '@/global'
+import { addGlobalPlugins } from '@/plugins'
 
 const app = createApp(App)
 
-app.use(globalRegister)
-app.use(router)
-app.use(store)
+app.use(addGlobalPlugins)
 
-app.mount('#app')
+app.use(router).use(store).mount('#app')
