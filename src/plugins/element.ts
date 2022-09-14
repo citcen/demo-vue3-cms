@@ -1,4 +1,5 @@
 import type { App } from 'vue'
+import 'element-plus/dist/index.css'
 import {
   ElButton,
   ElTable,
