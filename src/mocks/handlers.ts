@@ -15,12 +15,11 @@ export const handlers = [
 
     sessionStorage.setItem('is-authenticated', 'true')
     return res(
-      ctx.status(200),
+      ctx.status(403),
       ctx.json({
         user: {
           // id: nanoid(),
           name: (req.body as any).username
-          // token: req.id,
         }
       })
     )

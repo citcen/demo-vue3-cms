@@ -17,6 +17,7 @@ specifiers:
   husky: ^8.0.1
   lint-staged: ^13.0.3
   msw: ^0.47.2
+  normalize.css: ^8.0.1
   npm-run-all: ^4.1.5
   prettier: ^2.7.1
   typescript: ~4.7.4
@@ -31,6 +32,7 @@ specifiers:
 dependencies:
   axios: 0.27.2
   element-plus: 2.2.16_vue@3.2.39
+  normalize.css: 8.0.1
   vue: 3.2.39
   vue-router: 4.1.5_vue@3.2.39
   vuex: 4.0.2_vue@3.2.39
@@ -2944,6 +2946,10 @@ packages:
 
   /normalize-wheel-es/1.2.0:
     resolution: {integrity: sha512-Wj7+EJQ8mSuXr2iWfnujrimU35R2W4FAErEyTmJoJ7ucwTn2hOUSsRehMb5RSYkxXGTM7Y9QpvPmp++w5ftoJw==}
+    dev: false
+
+  /normalize.css/8.0.1:
+    resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
     dev: false
 
   /npm-run-all/4.1.5:
