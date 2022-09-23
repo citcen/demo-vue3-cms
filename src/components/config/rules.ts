@@ -3,7 +3,7 @@ export const accountRules = {
     { required: true, message: '请输入用户名', trigger: 'blur' },
     {
       pattern: /^[a-z0-9]{6,16}$/,
-      message: '必须是6~16位字母或者数字',
+      message: '请输入3~16位字母或者数字',
       trigger: 'blur'
     }
   ],
@@ -11,7 +11,7 @@ export const accountRules = {
     { required: true, message: '请输入密码', trigger: 'blur' },
     {
       pattern: /^[a-z0-9]{3,}$/,
-      message: '必须是3位以上数字',
+      message: '请输入3位以上数字',
       trigger: 'blur'
     },
     { max: 16, message: '密码长度不能超过16位', trigger: 'blur' }
