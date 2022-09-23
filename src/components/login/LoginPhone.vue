@@ -3,9 +3,9 @@
     <el-form-item label="手机号" prop="number">
       <el-input v-model="ruleForm.number" />
     </el-form-item>
-    <el-form-item label="验证码" prop="sms">
+    <el-form-item label="验证码" prop="smsCode">
       <div class="verify-code">
-        <el-input v-model="ruleForm.sms" />
+        <el-input v-model="ruleForm.smsCode" />
         <el-button class="get-btn" type="primary">获取验证码</el-button>
       </div>
     </el-form-item>
@@ -20,11 +20,14 @@ export default defineComponent({
   setup() {
     const ruleForm = reactive({
       number: '',
-      sms: ''
+      smsCode: ''
     })
+
+    const phoneLogin = () => {}
 
     return {
       ruleForm,
+      phoneLogin,
       phoneRules
     }
   }
