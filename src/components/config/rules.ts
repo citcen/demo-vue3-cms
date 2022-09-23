@@ -2,7 +2,7 @@ export const accountRules = {
   name: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
     {
-      pattern: /^[a-z0-9]{6,16}$/,
+      pattern: /^[a-z0-9]{3,16}$/,
       message: '请输入3~16位字母或者数字',
       trigger: 'blur'
     }
