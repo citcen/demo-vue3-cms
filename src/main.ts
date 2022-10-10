@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { setupStore } from './store'
 
 import 'normalize.css'
 import './assets/main.css'
@@ -14,7 +15,8 @@ worker.start({
   onUnhandledRequest: 'bypass'
 })
 
-const app = createApp(App)
+setupStore()
 
+const app = createApp(App)
 app.use(addGlobalPlugins)
 app.use(router).use(store).mount('#app')
