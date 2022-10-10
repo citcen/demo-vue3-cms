@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/main/Main.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,17 +6,28 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      redirect: '/home'
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: () => import('@/views/main/Main.vue')
     },
     {
       path: '/login',
       name: 'login',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('@/views/login/Login.vue')
     }
   ]
+})
+
+router.beforeEach((to) => {
+  if (to.path !== '/login') {
+    const isAuthenticated = localStorage.getItem('is-authenticated')
+    if (!isAuthenticated) {
+      return '/login'
+    }
+  }
 })
 
 export default router
