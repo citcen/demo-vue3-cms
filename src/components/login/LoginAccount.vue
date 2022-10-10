@@ -6,10 +6,14 @@
     label-width="70px"
   >
     <el-form-item label="账号" prop="name">
-      <el-input v-model="accountForm.name" />
+      <el-input v-model="accountForm.name" placeholder="admin" />
     </el-form-item>
     <el-form-item label="密码" prop="password">
-      <el-input v-model="accountForm.password" show-password />
+      <el-input
+        v-model="accountForm.password"
+        placeholder="任意数字字母"
+        show-password
+      />
     </el-form-item>
   </el-form>
 </template>
