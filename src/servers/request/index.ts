@@ -1,6 +1,6 @@
 /*  封装 axios 请求  */
 import axios from 'axios'
-import { ElLoading } from 'element-plus'
+import { ElLoading, ElMessage } from 'element-plus'
 import type { LoadingInstance } from 'element-plus/lib/components/loading/src/loading'
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import type { RequestInterceptors, ReqConfig } from './types'
@@ -32,6 +32,13 @@ export default class HTTPRequest {
       this.interceptors?.responseInterceptor,
       this.interceptors?.responseInterceptorCatch
     )
+    /*if (this.instance.method.toUpperCase() === "GET") {
+      // 如果是GET请求
+      endpoint += `${qs.stringify(data)}`;
+    } else {
+      // 其他请求
+      config.body = JSON.stringify(data || {});
+    }*/
 
     // 全局拦截 request
     this.instance.interceptors.request.use((config: AxiosRequestConfig) => {
@@ -47,27 +54,15 @@ export default class HTTPRequest {
     // 全局拦截 response
     this.instance.interceptors.response.use(
       (res: AxiosResponse) => {
-        switch (res.request.status) {
-          case 404:
-            console.log('404')
-            break
-          case 403:
-            console.log(403)
-            break
-        }
         this.loading?.close()
-        return res
+        if (res.data.code !== '00000') {
+          ElMessage.error(res.data.message)
+          return false
+        } else return res
       },
       (err) => {
-        switch (err.response.status) {
-          case '404':
-            console.log('404')
-            break
-          case '403':
-            console.log(403)
-            break
-        }
         this.loading?.close()
+        ElMessage.error(err?.response?.message || '请求失败，请稍后再试~')
         return err
       }
     )
