@@ -13,6 +13,7 @@
     "@element-plus/icons-vue": "^2.0.9",
     "axios": "^0.27.2",
     "element-plus": "^2.2.16",
+    "nanoid": "^4.0.0",
     "normalize.css": "^8.0.1",
     "vue": "^3.2.37",
     "vue-router": "^4.1.3",
