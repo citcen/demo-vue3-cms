@@ -1,4 +1,5 @@
 import HTTPRequest from './request'
+import localCache from '@/utils/cache'
 
 export const baseUrl = import.meta.env.VITE_APP_BASE_URL
 const timeOut = 20000
@@ -8,7 +9,7 @@ export const httpRequest = new HTTPRequest({
   timeout: timeOut,
   interceptors: {
     requestInterceptor: (config) => {
-      const token = '133'
+      const token = localCache.getCache('token') || ''
       return {
         headers: {
           Authorization: token ? `Bearer ${token}` : ''
@@ -20,7 +21,7 @@ export const httpRequest = new HTTPRequest({
       return err
     },
     responseInterceptor: (res) => {
-      return res.data
+      return res
     },
     responseInterceptorCatch: (err) => {
       return err
