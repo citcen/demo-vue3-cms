@@ -50,8 +50,9 @@ const loginModule: Module<LoginState, RootState> = {
       localCache.setCache('menus', menus)
 
       // 跳转到首页
-      router.push('/main')
+      router.push('/home')
     },
+    // 页面刷新读取缓存数据
     loadLocalLogin({ commit }) {
       const token = localCache.getCache('token')
       if (token) {
