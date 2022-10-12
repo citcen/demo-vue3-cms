@@ -7,3 +7,9 @@ export interface LoginState {
   userInfo: object
   menus: any[]
 }
+
+export interface RootWithModule {
+  login: LoginState
+}
+
+export type IStoreType = RootState & RootWithModule
