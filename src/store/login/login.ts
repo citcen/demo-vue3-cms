@@ -45,7 +45,7 @@ const login: Module<LoginState, RootState> = {
 
       // 3.请求菜单
       const userMenusResult = (await requestUserMenus(userInfo.role.id)) as any
-      const menus = userMenusResult?.data?.list.children
+      const menus = userMenusResult?.data?.list
       commit('setMenus', menus)
       localCache.setCache('menus', menus)
 

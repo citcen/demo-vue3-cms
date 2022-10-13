@@ -5,36 +5,30 @@
       <span>vue3</span>
     </div>
     <el-menu default-active="2" class="el-menu-vertical">
-      <template v-for="item in userMenus" :key="item.id"></template>
-      <!--      <el-sub-menu index="1">
-        <template #title>
-          <el-icon><location /></el-icon>
-          <span>Navigator One</span>
+      <template v-for="item in userMenus" :key="item.id">
+        <template v-if="item.type === 1"
+          ><!-- 1级菜单 有子菜单 -->
+          <el-sub-menu :index="item.id + ''">
+            <template #title>
+              <el-icon v-if="item.icon" v-html="item.icon"></el-icon>
+              <span>{{ item.name }}</span>
+            </template>
+            <template v-for="subItem in item.children" :key="subItem.id"
+              ><!-- 2级菜单 -->
+              <el-menu-item :index="subItem.id + ''">{{
+                subItem.name
+              }}</el-menu-item>
+            </template>
+          </el-sub-menu>
         </template>
-        <el-menu-item-group title="Group One">
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item two</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="Group Two">
-          <el-menu-item index="1-3">item three</el-menu-item>
-        </el-menu-item-group>
-        <el-sub-menu index="1-4">
-          <template #title>item four</template>
-          <el-menu-item index="1-4-1">item one</el-menu-item>
-        </el-sub-menu>
-      </el-sub-menu>
-      <el-menu-item index="2">
-        <el-icon><icon-menu /></el-icon>
-        <span>Navigator Two</span>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <el-icon><document /></el-icon>
-        <span>Navigator Three</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <el-icon><setting /></el-icon>
-        <span>Navigator Four</span>
-      </el-menu-item>-->
+        <template v-else
+          ><!-- 1级菜单 无子菜单 -->
+          <el-menu-item :index="item.id + ''">
+            <el-icon v-if="item.icon" v-html="item.icon"></el-icon>
+            <span>{{ item.name }}</span>
+          </el-menu-item>
+        </template>
+      </template>
     </el-menu>
   </div>
 </template>
@@ -57,7 +51,7 @@ export default defineComponent({
 <style scoped lang="less">
 .nav-menu {
   height: 100%;
-  background-color: #001529;
+  background-color: #006ee0;
 
   .logo {
     display: flex;
@@ -78,5 +72,9 @@ export default defineComponent({
       color: white;
     }
   }
+}
+
+.el-menu-vertical:not(.el-menu--collapse) {
+  height: calc(100% - 48px);
 }
 </style>

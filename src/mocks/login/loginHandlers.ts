@@ -73,9 +73,10 @@ export const loginHandlers = [
     }
 
     const id = req.params.id
-    const list = menuList.find((item) => {
-      return item.id === Number(id)
-    })
+    let list: any[] = []
+    if (id === '1') {
+      list = menuList
+    }
 
     return res(
       ctx.status(200),

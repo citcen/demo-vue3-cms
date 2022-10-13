@@ -51,7 +51,7 @@ export default defineComponent({
             localCache.delCache('_pwd_')
           }
 
-          store.dispatch('loginModule/accountLoginAction', { ...accountForm })
+          store.dispatch('login/accountLoginAction', { ...accountForm })
         }
       })
     }
