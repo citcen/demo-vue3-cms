@@ -4,7 +4,7 @@
       <img src="~@/assets/images/logo.svg" alt="logo" />
       <span>vue3</span>
     </div>
-    <el-menu default-active="2" class="el-menu-vertical">
+    <el-menu default-active="2" class="el-menu-vertical" :collapse="collapse">
       <template v-for="item in userMenus" :key="item.id">
         <template v-if="item.type === 1"
           ><!-- 1级菜单 有子菜单 -->
@@ -38,6 +38,12 @@ import { defineComponent, computed } from 'vue'
 import { IUseStore } from '@/store'
 
 export default defineComponent({
+  props: {
+    collapse: {
+      type: Boolean,
+      default: false
+    }
+  },
   setup() {
     const store = IUseStore()
     const userMenus = computed(() => store.state.login.menus)
@@ -51,15 +57,15 @@ export default defineComponent({
 <style scoped lang="less">
 .nav-menu {
   height: 100%;
-  background-color: #006ee0;
 
   .logo {
     display: flex;
     height: 28px;
-    padding: 12px 10px 8px 10px;
+    padding: 12px 8px 8px 8px;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    background-color: #006ee0;
 
     img {
       height: 100%;
@@ -70,11 +76,16 @@ export default defineComponent({
       font-size: 16px;
       font-weight: 700;
       color: white;
+      margin-left: 10px;
     }
   }
 }
 
 .el-menu-vertical:not(.el-menu--collapse) {
   height: calc(100% - 48px);
+}
+
+.el-menu {
+  border-right: none;
 }
 </style>
