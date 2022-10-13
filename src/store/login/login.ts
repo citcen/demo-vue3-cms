@@ -9,7 +9,7 @@ import type { LoginAccount } from '@/types/login'
 import localCache from '@/utils/cache'
 import router from '@/router'
 
-const loginModule: Module<LoginState, RootState> = {
+const login: Module<LoginState, RootState> = {
   namespaced: true,
   state() {
     return {
@@ -70,4 +70,4 @@ const loginModule: Module<LoginState, RootState> = {
   }
 }
 
-export default loginModule
+export default login

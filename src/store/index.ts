@@ -1,7 +1,7 @@
 import { createStore, useStore } from 'vuex'
 import type { Store } from 'vuex'
 import type { IStoreType, RootState } from '@/store/types'
-import loginModule from '@/store/login/login'
+import login from '@/store/login/login'
 
 const store = createStore<RootState>({
   state: () => {
@@ -13,7 +13,7 @@ const store = createStore<RootState>({
   getters: {},
   actions: {},
   modules: {
-    loginModule
+    login
   }
 })
 
