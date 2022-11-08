@@ -15,9 +15,11 @@
             </template>
             <template v-for="subItem in item.children" :key="subItem.id"
               ><!-- 2级菜单 -->
-              <el-menu-item :index="subItem.id + ''">{{
-                subItem.name
-              }}</el-menu-item>
+              <el-menu-item
+                :index="subItem.id + ''"
+                @click="handleMenuItemClick(subItem)"
+                >{{ subItem.name }}</el-menu-item
+              >
             </template>
           </el-sub-menu>
         </template>
@@ -36,6 +38,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { IUseStore } from '@/store'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   props: {
@@ -48,8 +51,17 @@ export default defineComponent({
     const store = IUseStore()
     const userMenus = computed(() => store.state.login.menus)
 
+    const router = useRouter()
+
+    const handleMenuItemClick = (item: any) => {
+      router.push({
+        path: item.url ?? '/404'
+      })
+    }
+
     return {
-      userMenus
+      userMenus,
+      handleMenuItemClick
     }
   }
 })

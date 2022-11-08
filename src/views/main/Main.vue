@@ -8,7 +8,9 @@
         <el-header class="page-header">
           <nav-header @foldChange="handelFoldChange" />
         </el-header>
-        <el-main class="page-content">Main</el-main>
+        <el-main class="page-content">
+          <router-view></router-view>
+        </el-main>
         <el-footer class="page-footer">Footer</el-footer>
       </el-container>
     </el-container>
@@ -19,9 +21,13 @@
 import { defineComponent, ref } from 'vue'
 import NavMenu from '@/components/navMenu'
 import NavHeader from '@/components/navHeader'
+import RouterLink from '@/App.vue'
+import RouterView from '@/App.vue'
 
 export default defineComponent({
   components: {
+    RouterView,
+    RouterLink,
     NavMenu,
     NavHeader
   },
