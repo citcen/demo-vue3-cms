@@ -8,6 +8,7 @@ import {
 import type { LoginAccount } from '@/types/login'
 import localCache from '@/utils/cache'
 import router from '@/router'
+import { mapMenusToRoutes } from '@/utils/mapMenus'
 
 const login: Module<LoginState, RootState> = {
   namespaced: true,
@@ -27,6 +28,13 @@ const login: Module<LoginState, RootState> = {
     },
     setMenus: (state, menus) => {
       state.menus = menus
+
+      // 根据 menus 生成 routes
+      const routes = mapMenusToRoutes(menus)
+
+      routes.forEach((route) => {
+        router.addRoute('home', route)
+      })
     }
   },
   actions: {
