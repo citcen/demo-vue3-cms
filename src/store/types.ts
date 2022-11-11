@@ -4,7 +4,7 @@ export interface RootState {
 
 export interface LoginState {
   token: string
-  userInfo: object
+  userInfo: any
   menus: any[]
 }
 

@@ -9,7 +9,7 @@
           <nav-header @foldChange="handelFoldChange" />
         </el-header>
         <el-main class="page-content">
-          <router-view></router-view>
+          <div class="page-router"><router-view></router-view></div>
         </el-main>
         <el-footer class="page-footer">Footer</el-footer>
       </el-container>
@@ -63,6 +63,11 @@ export default defineComponent({
   .content {
     background-color: #fff;
     border-radius: 8px;
+  }
+
+  .page-router {
+    background-color: #fff;
+    border-radius: 5px;
   }
 }
 
